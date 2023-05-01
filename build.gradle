@@ -17,6 +17,7 @@ dependencies {
     implementation 'com.h2database:h2:2.1.214'
     implementation 'com.mysql:mysql-connector-j:8.0.32'
     implementation 'org.jetbrains:annotations:24.0.1'
+    implementation 'org.flywaydb:flyway-core:9.17.0'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
