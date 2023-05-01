@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'checkstyle'
+}
+
+group 'com.goit'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.10.1'
+    implementation 'com.h2database:h2:2.1.214'
+    implementation 'com.mysql:mysql-connector-j:8.0.32'
+    implementation 'org.jetbrains:annotations:24.0.1'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testCompileOnly 'org.projectlombok:lombok:1.18.26'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.goit.Main'
+    }
+    from configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+test {
+    useJUnitPlatform()
+}
+
+apply plugin: 'java'
+
+javadoc {
+    source = sourceSets.main.allJava
+}
