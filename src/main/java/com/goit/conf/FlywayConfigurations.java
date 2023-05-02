@@ -12,11 +12,12 @@ public class FlywayConfigurations {
 
     private Flyway flyway;
 
-    public void setup() throws IOException {
+    public FlywayConfigurations setup() throws IOException {
         setup(DEFAULT_FILE_NAME);
+        return this;
     }
 
-    public void setup(String propertiesFileName) throws IOException {
+    public FlywayConfigurations setup(String propertiesFileName) throws IOException {
         Properties properties = new Properties();
         properties.load(FlywayConfigurations.class.getClassLoader().getResourceAsStream(propertiesFileName));
 
@@ -30,7 +31,10 @@ public class FlywayConfigurations {
                 .encoding(StandardCharsets.UTF_8)
                 .locations(migrations, mixtures)
                 .dataSource(url, username, password)
+                .placeholderReplacement(false)
+                .failOnMissingLocations(true)
                 .load();
+        return this;
     }
 
     public void migrate() {
