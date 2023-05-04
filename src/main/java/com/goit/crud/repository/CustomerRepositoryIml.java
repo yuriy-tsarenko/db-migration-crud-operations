@@ -3,8 +3,9 @@ package com.goit.crud.repository;
 import com.goit.crud.datasource.Datasource;
 import com.goit.crud.entity.CustomerEntity;
 import com.goit.crud.exception.DatasourceException;
-import org.apache.log4j.Logger;
 import org.intellij.lang.annotations.Language;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,12 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-//@Log4j
+//@Slf4j
 //DAO - DATA ACCESS OBJECT
 public class CustomerRepositoryIml extends JDBCRepository<CustomerEntity> {
 
-    private static final Logger LOG = Logger.getLogger(CustomerRepositoryIml.class);
     private static final String TABLE_NAME = "customers";
+    private static final Logger LOG = LoggerFactory.getLogger(CustomerRepositoryIml.class);
 
     @Language("SQL")
     private static final String INSERT_CUSTOMER = """
@@ -50,8 +51,9 @@ public class CustomerRepositoryIml extends JDBCRepository<CustomerEntity> {
             LOG.info("all customers loaded");
             return customerEntities;
         } catch (Exception e) {
-            LOG.error(e);
-            throw new DatasourceException("findAll", e);
+            String message = "findAll";
+            LOG.error(message, e);
+            throw new DatasourceException(message, e);
         }
     }
 
@@ -70,8 +72,9 @@ public class CustomerRepositoryIml extends JDBCRepository<CustomerEntity> {
             datasource.close();
             return customerEntity;
         } catch (Exception e) {
-            LOG.error(e);
-            throw new DatasourceException("findById", e);
+            String message = "findById";
+            LOG.error(message, e);
+            throw new DatasourceException(message, e);
         }
     }
 
@@ -99,8 +102,9 @@ public class CustomerRepositoryIml extends JDBCRepository<CustomerEntity> {
                 return update(entity);
             }
         } catch (Exception e) {
-            LOG.error(e);
-            throw new DatasourceException("save", e);
+            String message = "save";
+            LOG.error(message, e);
+            throw new DatasourceException(message, e);
         }
     }
 
@@ -115,8 +119,9 @@ public class CustomerRepositoryIml extends JDBCRepository<CustomerEntity> {
             preparedStatement.executeUpdate();
             datasource.close();
         } catch (Exception e) {
-            LOG.error(e);
-            throw new DatasourceException("delete", e);
+            String message = "delete";
+            LOG.error(message, e);
+            throw new DatasourceException(message, e);
         }
     }
 
@@ -136,8 +141,9 @@ public class CustomerRepositoryIml extends JDBCRepository<CustomerEntity> {
             datasource.close();
             return entity;
         } catch (Exception e) {
-            LOG.error(e);
-            throw new DatasourceException("save", e);
+            String message = "update";
+            LOG.error(message, e);
+            throw new DatasourceException(message, e);
         }
     }
 

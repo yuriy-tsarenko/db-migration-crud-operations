@@ -32,6 +32,7 @@ public class FlywayConfigurations {
                 .encoding(StandardCharsets.UTF_8)
                 .locations(migrations, mixtures)
                 .dataSource(url, username, password)
+                .loggers(properties.getProperty(Constants.FLYWAY_LOGGER))
                 .placeholderReplacement(false)
                 .failOnMissingLocations(true)
                 .load();

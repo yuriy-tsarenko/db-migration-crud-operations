@@ -12,6 +12,7 @@ public final class Constants {
     public static final String CONNECTION_AUTOCOMMIT = "com.mysql.autocommit";
     public static final String TRANSACTION_ISOLATION = "com.mysql.isolation.level";
     public static final String FLYWAY_CONNECTION_URL = "org.flywaydb.url";
+    public static final String FLYWAY_LOGGER = "org.flywaydb.logger";
     public static final String FLYWAY_USER = "org.flywaydb.user";
     public static final String FLYWAY_PASSWORD = "org.flywaydb.password";
     public static final String LOG_PATTERN = "log4j.conversion.pattern";
