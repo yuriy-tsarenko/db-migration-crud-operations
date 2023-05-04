@@ -1,5 +1,6 @@
 package com.goit.conf;
 
+import com.goit.crud.util.Constants;
 import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.Location;
 

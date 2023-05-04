@@ -1,6 +1,6 @@
 -- Create the customers table
 CREATE TABLE customers (
-    customer_id INT PRIMARY KEY,
+    customer_id BIGINT PRIMARY KEY,
     customer_name VARCHAR(50),
     contact_name VARCHAR(50),
     country VARCHAR(50)
@@ -41,7 +41,7 @@ CREATE TABLE products (
 -- Create the orders table
 CREATE TABLE orders (
     order_id INT PRIMARY KEY,
-    customer_id INT,
+    customer_id BIGINT,
     order_date DATE,
     total_amount DECIMAL(10,2),
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
